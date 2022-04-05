@@ -1,0 +1,28 @@
+<div class="card-header">Name: {{ searchTerm.name }}</div>
+<div class="display">
+  <ul class="list-group">
+    <li class="list-group-item">
+      <strong>Image: </strong>
+      <img src="{{ searchTerm.recipe_pic }}" alt="Recipe Image" />
+    </li>
+    <li class="list-group-item">
+      <strong>Rating: </strong> {{ searchTerm.rating }}
+    </li>
+    <!-- <li class="list-group-item"><strong>Email: </strong> {{ searchTerm. }}</li> -->
+    <li class="list-group-item">
+      <strong>Description: </strong> {{ searchTerm.description }}
+    </li>
+    <li class="list-group-item">
+      <strong>Ingridients: </strong> {{ searchTerm.ingredients }}
+    </li>
+    <li class="list-group-item">
+      <strong>Number served: </strong> {{ searchTerm.number_served }}
+    <li class="list-group-item">
+      <strong>Country: </strong> {{ searchTerm.country }}
+    <li class="list-group-item">
+      <strong>Instructions: </strong> {{ searchTerm.instructions }}
+    <li class="list-group-item">
+      <strong>Created: </strong> {{ searchTerm.created_at }}
+    </li>
+  </ul>
+</div>
