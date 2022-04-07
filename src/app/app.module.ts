@@ -9,10 +9,13 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { CarouselListComponent } from './carousel-list/carousel-list.component';
 import { TrendingListComponent } from './trending-list/trending-list.component';
 import { DateCountPipe } from './Pipes/date-count.pipe';
-import { SearchService } from './Services/search.service';
+// import { SearchService } from './Services/search.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
+import { SearcRecipesComponent } from './searc-recipes/searc-recipes.component';
+import { SearchProfileComponent } from './search-profile/search-profile.component';
+import { RecipeapiservicesService } from './Services/recipeapiservices.service';
 // import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
@@ -26,6 +29,8 @@ import { FooterComponent } from './footer/footer.component';
     DateCountPipe,
     NavBarComponent,
     FooterComponent,
+    SearcRecipesComponent,
+    SearchProfileComponent,
     // HomepageComponent
   ],
   imports: [
