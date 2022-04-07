@@ -5,6 +5,36 @@
         </h1> -->
   
         <div class="describe" *ngFor="let recipe of recipeData">
+          <li class="list-group-item">
+            <strong>Name: </strong> {{ searchTerm.recipe_name }}
+          </li>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <strong>Image: </strong>
+              <img src="{{ searchTerm.recipe_pic }}" alt="Recipe Image" />
+            </li>
+            <li class="list-group-item">
+              <strong>Rating: </strong> {{ searchTerm.recipe_rating }}
+            </li>
+            <!-- <li class="list-group-item"><strong>Email: </strong> {{ searchTerm. }}</li> -->
+            <li class="list-group-item">
+              <strong>Description: </strong> {{ searchTerm.procedure }}
+            </li>
+            <li class="list-group-item">
+              <strong>Ingridients: </strong> {{ searchTerm.ingredient }}
+            </li>
+            <li class="list-group-item">
+              <strong>Category: </strong> {{ searchTerm.category }}
+            <li class="list-group-item">
+              <strong>Guests served: </strong> {{ searchTerm.guests_served }}
+            <li class="list-group-item">
+              <strong>Country: </strong> {{ searchTerm.country }}
+            <li class="list-group-item">
+              <strong>Create date: </strong> {{ searchTerm.create_date }}
+            <li class="list-group-item">
+              <strong>Created by: </strong> {{ searchTerm.created_by }}
+            </li>
+          </ul>
           <!-- <h3>Name: {{ re.name }}</h3>
           <h4>Description: {{ repositoryResult.description }}</h4>
           <h3>Created on: {{ repositoryResult.created_at | date }}</h3>
