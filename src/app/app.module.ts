@@ -3,40 +3,34 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TrendingComponent } from './trending/trending.component';
-import { CarouselComponent } from './carousel/carousel.component';
-import { RecipesComponent } from './recipes/recipes.component';
-import { CarouselListComponent } from './carousel-list/carousel-list.component';
-import { TrendingListComponent } from './trending-list/trending-list.component';
 import { DateCountPipe } from './Pipes/date-count.pipe';
 // import { SearchService } from './Services/search.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
-import { SearcRecipesComponent } from './searc-recipes/searc-recipes.component';
-import { SearchProfileComponent } from './search-profile/search-profile.component';
 import { RecipeapiservicesService } from './Services/recipeapiservices.service';
+import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
+import { AddRecipeComponent } from './add-recipe/add-recipe.component';
+import { FormsModule } from '@angular/forms';
+import { RecipeListComponent } from './recipe-list/recipe-list.component';
 // import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TrendingComponent,
-    CarouselComponent,
-    RecipesComponent,
-    CarouselListComponent,
-    TrendingListComponent,
     DateCountPipe,
     NavBarComponent,
     FooterComponent,
-    SearcRecipesComponent,
-    SearchProfileComponent,
+    RecipeDetailsComponent,
+    AddRecipeComponent,
+    RecipeListComponent,
     // HomepageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
