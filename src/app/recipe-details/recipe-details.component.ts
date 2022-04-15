@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class RecipeDetailsComponent implements OnInit {
   @Input() viewMode = 'false';
   @Input() currentRecipe: Recipe = {
+    name: '',
     description: '',  
     imagePath: '',
     ingredients: [],
@@ -20,8 +21,7 @@ export class RecipeDetailsComponent implements OnInit {
     guests: 0,
     country: '',
     date: '',
-    by: '',
-    published: false
+    by: ''
   };
   message: string = '';
 
@@ -33,47 +33,19 @@ export class RecipeDetailsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    if (this.viewMode) {
+    if (!this.viewMode) {
       this.message = '';
       this.getRecipe(this.route.snapshot.params['id']);
     }
   }
   getRecipe(id: string): void {
     this.recipeapiService.getRecipeById(id).subscribe({
-      next: (response: Recipe) => {
-        this.currentRecipe = response;
-        console.log(response);
+      next: (data) => {
+        this.currentRecipe = data;
+        console.log(data);
       },
       error: (error: any) => {
         console.error(error);
-      }
-    });
-  }
-  updatePublished(status: boolean): void {
-    const data = {
-      name: this.currentRecipe.name,
-      description: this.currentRecipe.description,
-      imagePath: this.currentRecipe.imagePath,
-      ingredients: this.currentRecipe.ingredients,
-      rating: this.currentRecipe.rating,
-      procudure: this.currentRecipe.procudure,
-      category: this.currentRecipe.category,
-      guests: this.currentRecipe.guests,
-      country: this.currentRecipe.country,
-      date: this.currentRecipe.date,
-      by: this.currentRecipe.by,
-      published: status
-    };
-    this.message='';
-    this.recipeapiService.updateRecipe(this.currentRecipe.id, data).subscribe({
-      next: (response) => {
-        console.log(response);
-        this.currentRecipe.published = status;
-        this.message = 'Recipe updated successfully';
-      },
-      error: (error: any) => {
-        console.error(error);
-        this.message = 'Error updating recipe';
       }
     });
   }
@@ -82,7 +54,7 @@ export class RecipeDetailsComponent implements OnInit {
     this.recipeapiService.updateRecipe(this.currentRecipe.id, this.currentRecipe).subscribe({
       next: (response) => {
         console.log(response);
-        this.message = 'Recipe updated successfully';
+        this.message = response.message ? response.message: 'Recipe updated successfully';
       },
       error: (error: any) => {
         console.error(error);

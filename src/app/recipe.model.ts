@@ -11,7 +11,4 @@ export interface Recipe {
     country: string;
     date: string;
     by: string;
-    published: boolean;
-    
-
 }

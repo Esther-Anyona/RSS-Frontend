@@ -19,8 +19,7 @@ export class AddRecipeComponent implements OnInit {
     guests: 0,
     country: '',
     date: '',
-    by: '',
-    published: false
+    by: ''
   };
   submitted=false;
 
@@ -40,8 +39,7 @@ export class AddRecipeComponent implements OnInit {
       guests: this.recipe.guests,
       country: this.recipe.country,
       date: this.recipe.date,
-      by: this.recipe.by,
-      published: this.recipe.published
+      by: this.recipe.by
     };
     this.recipeapiService.addRecipe(data).subscribe({
       next: response => {
@@ -66,8 +64,7 @@ export class AddRecipeComponent implements OnInit {
       guests: 0,
       country: '',
       date: '',
-      by: '',
-      published: false
+      by: ''
     };
   }
 

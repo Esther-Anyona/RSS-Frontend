@@ -30,13 +30,13 @@
           {{ recipe.name }}
         </li>
       </ul>
-      <button class="m-3 btn btn-sm btn-danger" (click)="removeRecipe(currentIndex)">
+      <button class="m-3 btn btn-sm btn-danger" (click)="removeAllRecipes()">
         Remove All
       </button>
     </div>
     <div class="col-md-6">
       <app-recipe-details
-        
+        viewMode="true"
         [currentRecipe]="currentRecipe"
       ></app-recipe-details>
     </div>

@@ -1,20 +1,16 @@
 <div *ngIf="viewMode; else editable">
     <div *ngIf="currentRecipe.id">
-      <h4>Tutorial</h4>
+      <h4>Recipe</h4>
       <div>
-        <label><strong>Title:</strong></label> {{ currentRecipe.name }}
+        <label><strong>Name:</strong></label> {{ currentRecipe.name }}
       </div>
       <div>
         <label><strong>Description:</strong></label>
         {{ currentRecipe.description }}
       </div>
-      <div>
-        <label><strong>Status:</strong></label>
-        {{ currentRecipe.published ? "Published" : "Pending" }}
-      </div>
       <a
         class="badge badge-warning"
-        routerLink="/tutorials/{{ currentRecipe.id }}"
+        routerLink="/recipes/{{ currentRecipe.id }}"
       >
         Edit
       </a>
@@ -29,13 +25,13 @@
       <h4>Recipe</h4>
       <form>
         <div class="form-group">
-          <label for="title">Name</label>
+          <label for="name">Name</label>
           <input
             type="text"
             class="form-control"
-            id="title"
+            id="name"
             [(ngModel)]="currentRecipe.name"
-            name="title"
+            name="name"
           />
         </div>
         <div class="form-group">
@@ -48,25 +44,7 @@
             name="description"
           />
         </div>
-        <div class="form-group">
-          <label><strong>Status:</strong></label>
-          {{ currentRecipe.published' ? "Published" : "Pending" }}
-        </div>
       </form>
-      <button
-        class="badge badge-primary mr-2"
-        *ngIf="currentRecipe.published"
-        (click)="updatePublished(false)"
-      >
-        UnPublish
-      </button>
-      <button
-        *ngIf="!currentRecipe.published"
-        class="badge badge-primary mr-2"
-        (click)="updatePublished(true)"
-      >
-        Publish
-      </button>
       <button class="badge badge-danger mr-2" (click)="deleteRecipe()">
         Delete
       </button>

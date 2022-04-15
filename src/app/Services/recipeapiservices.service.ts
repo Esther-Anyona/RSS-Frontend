@@ -16,11 +16,11 @@ export class RecipeapiservicesService {
   getRecipeById(id:any):Observable<any>{
     return this.http.get(`${baseUrl}/${id}`);
   }
-  addRecipe(recipe:any):Observable<any>{
-    return this.http.post(baseUrl,recipe);
+  addRecipe(data:any):Observable<any>{
+    return this.http.post(baseUrl,data);
   }
-  updateRecipe(id:number, recipe:any):Observable<any>{
-    return this.http.put(`${baseUrl}/${id}`,recipe);
+  updateRecipe(id:number, data:any):Observable<any>{
+    return this.http.put(`${baseUrl}/${id}`,data);
   }
   deleteRecipe(id:number):Observable<any>{
     return this.http.delete(`${baseUrl}/${id}`);
@@ -28,8 +28,7 @@ export class RecipeapiservicesService {
   deleteAllRecipes():Observable<any>{
     return this.http.delete(baseUrl);
   }
-  findRecipeByName(name:string):Observable<any>{
-    return this.http.get(`${baseUrl}?name=${name}`);
+  findRecipeByName(name:string):Observable<Recipe[]>{
+    return this.http.get<Recipe[]>(`${baseUrl}?name=${name}`);
   }
-
 }

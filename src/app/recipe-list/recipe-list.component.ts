@@ -19,8 +19,7 @@ export class RecipeListComponent implements OnInit {
     guests: 0,
     country: '',
     date: '',
-    by: '',
-    published: false
+    by: ''
   };
   currentIndex: number = -1;
   name: string = '';
@@ -53,8 +52,7 @@ export class RecipeListComponent implements OnInit {
       guests: 0,
       country: '',
       date: '',
-      by: '',
-      published: false
+      by: ''
     };
     this.currentIndex = -1;
   }
@@ -62,10 +60,10 @@ export class RecipeListComponent implements OnInit {
     this.currentRecipe = recipe;
     this.currentIndex = index;
   }
-  removeRecipe(id: number): void {
-    this.recipeapiService.deleteRecipe(id).subscribe({
-      next: (data) => {
-        console.log(data);
+  removeAllRecipes(): void {
+    this.recipeapiService.deleteAllRecipes().subscribe({
+      next: (response) => {
+        console.log(response);
         this.refreshList();
       },
       error: (error: any) => {
@@ -84,8 +82,7 @@ export class RecipeListComponent implements OnInit {
       guests: 0,
       country: '',
       date: '',
-      by: '',
-      published: false
+      by: ''
     };
     this.currentIndex = -1;
     this.recipeapiService.findRecipeByName(this.name).subscribe({
