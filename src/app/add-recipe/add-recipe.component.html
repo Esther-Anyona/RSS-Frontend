@@ -8,47 +8,47 @@
             class="form-control"
             id="name"
             required
-            [(ngModel)]="recipe.name"
+            [(ngModel)]="recipe.recipe_name"
             name="name"
           />
         </div>
         <div class="form-group">
-          <label for="description">Description</label>
+          <label for="description">Ingredients</label>
           <input
             class="form-control"
             id="description"
             required
-            [(ngModel)]="recipe.description"
+            [(ngModel)]="recipe.ingredient"
             name="description"
           />
         </div>
         <div class="form-group">
-            <label for="image">Image</label>
+            <label for="image">Category</label>
             <input
               class="form-control"
               id="image"
               required
-              [(ngModel)]="recipe.imagePath"
+              [(ngModel)]="recipe.category"
               name="image"
             />
           </div>
           <div class="form-group">
-            <label for="ingredient">Ingridients</label>
+            <label for="ingredient">Image</label>
             <input
               class="form-control"
               id="ingredient"
               required
-              [(ngModel)]="recipe.ingredients"
+              [(ngModel)]="recipe.recipe_pic"
               name="ingredient"
             />
           </div>
           <div class="form-group">
-            <label for="rating">Rating</label>
+            <label for="rating">Country</label>
             <input
               class="form-control"
               id="rating"
               required
-              [(ngModel)]="recipe.rating"
+              [(ngModel)]="recipe.country"
               name="rating"
             />
           </div>
@@ -58,41 +58,41 @@
               class="form-control"
               id="procedure"
               required
-              [(ngModel)]="recipe.procudure"
+              [(ngModel)]="recipe.procedure"
               name="procedure"
             />
           </div>
           <div class="form-group">
-            <label for="category">Category</label>
+            <label for="category">Guests</label>
             <input
               class="form-control"
               id="category"
               required
-              [(ngModel)]="recipe.category"
+              [(ngModel)]="recipe.guests_served"
               name="category"
             />
           </div>
           <div class="form-group">
-            <label for="guests">Guests</label>
+            <label for="guests">Created on</label>
             <input
               class="form-control"
               id="guests"
               required
-              [(ngModel)]="recipe.guests"
+              [(ngModel)]="recipe.created_date"
               name="guests"
             />
           </div>
             <div class="form-group">
-                <label for="country">Country</label>
+                <label for="country">Created by</label>
                 <input
                 class="form-control"
                 id="country"
                 required
-                [(ngModel)]="recipe.country"
+                [(ngModel)]="recipe.created_by"
                 name="country"
                 />
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="create_date">Create date</label>
                 <input
                 class="form-control"
@@ -111,7 +111,7 @@
                 [(ngModel)]="recipe.by"
                 name="created_by"
                 />
-            </div>
+            </div> -->
         <button (click)="saveRecipe()" class="btn btn-success">Submit</button>
       </div>
       <div *ngIf="submitted">

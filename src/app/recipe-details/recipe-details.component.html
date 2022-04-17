@@ -2,11 +2,11 @@
     <div *ngIf="currentRecipe.id">
       <h4>Recipe</h4>
       <div>
-        <label><strong>Name:</strong></label> {{ currentRecipe.name }}
+        <label><strong>Name:</strong></label> {{ currentRecipe.recipe_name }}
       </div>
       <div>
-        <label><strong>Description:</strong></label>
-        {{ currentRecipe.description }}
+        <label><strong>Category:</strong></label>
+        {{ currentRecipe.category }}
       </div>
       <a
         class="badge badge-warning"
@@ -30,17 +30,17 @@
             type="text"
             class="form-control"
             id="name"
-            [(ngModel)]="currentRecipe.name"
+            [(ngModel)]="currentRecipe.recipe_name"
             name="name"
           />
         </div>
         <div class="form-group">
-          <label for="description">Description</label>
+          <label for="description">Ingridients</label>
           <input
             type="text"
             class="form-control"
             id="description"
-            [(ngModel)]="currentRecipe.description"
+            [(ngModel)]="currentRecipe.ingredient"
             name="description"
           />
         </div>

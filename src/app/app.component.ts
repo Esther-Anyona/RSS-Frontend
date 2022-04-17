@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RecipeapiservicesService } from './Services/recipeapiservices.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,20 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Recipes';
+  recipeData:any;
+
+  constructor(private recipeapiService:RecipeapiservicesService) { }
+      
+      ngOnInit(): void {
+
+
+        this.recipeapiService.allRecipes().subscribe((data:any)=>{
+
+          console.log("My recipes",data);
+          this.recipeData=data;
+      
+                    
+        })
+
+      }
 }

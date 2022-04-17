@@ -5,7 +5,7 @@
           type="text"
           class="form-control"
           placeholder="Search by name"
-          [(ngModel)]="name"
+          [(ngModel)]="recipes"
         />
         <div class="input-group-append">
           <button
@@ -27,7 +27,7 @@
           [class.active]="i == currentIndex"
           (click)="setCurrentRecipe(recipe, i)"
         >
-          {{ recipe.name }}
+          {{ recipe.recipe_name }}
         </li>
       </ul>
       <button class="m-3 btn btn-sm btn-danger" (click)="removeAllRecipes()">
@@ -36,7 +36,7 @@
     </div>
     <div class="col-md-6">
       <app-recipe-details
-        viewMode="true"
+        viewMode=""
         [currentRecipe]="currentRecipe"
       ></app-recipe-details>
     </div>

@@ -10,49 +10,52 @@ import { RecipeapiservicesService } from '../Services/recipeapiservices.service'
 export class RecipeListComponent implements OnInit {
   recipes?: Recipe[];
   currentRecipe: Recipe = {
-    description: '',
-    imagePath: '',
-    ingredients: [], 
-    rating: 0,
-    procudure: '',
+    recipe_name: '',
+    ingredient: '',
     category: '',
-    guests: 0,
+    recipe_pic: '',
     country: '',
-    date: '',
-    by: ''
+    procedure: '',
+    guests_served:0,
+    created_date: '',  
+    created_by: ''
   };
   currentIndex: number = -1;
   name: string = '';
+  recipeData:any;
 
   constructor(private recipeapiService:RecipeapiservicesService) { }
 
   ngOnInit(): void {
+    this.recipeapiService.allRecipes().subscribe((data:any)=>{
+
+      console.log("My recipes",data);
+      this.recipeData=data;
+  
+                
+    })
     this.retrieveAllRecipes();
   }
   retrieveAllRecipes(): void {
     this.recipeapiService.getAllRecipes().subscribe({
       next: (data) => {
         this.recipes = data;
-        console.log(data);
+        console.log("My recipes",data);
       },
-      error: (error: any) => {
-        console.error(error);
-      }
     });
   }
   refreshList(): void {
     this.retrieveAllRecipes();
     this.currentRecipe = {
-      description: '',
-      imagePath: '',
-      ingredients: [],
-      rating: 0,
-      procudure: '',
+      recipe_name: '',
+      ingredient: '',
       category: '',
-      guests: 0,
+      recipe_pic: '',
       country: '',
-      date: '',
-      by: ''
+      procedure: '',
+      guests_served:0,
+      created_date: '',  
+      created_by: ''
     };
     this.currentIndex = -1;
   }
@@ -66,33 +69,26 @@ export class RecipeListComponent implements OnInit {
         console.log(response);
         this.refreshList();
       },
-      error: (error: any) => {
-        console.error(error);
-      }
     });
   }
   searchName(): void {
     this.currentRecipe = {
-      description: '',
-      imagePath: '',
-      ingredients: [],
-      rating: 0,
-      procudure: '',
+      recipe_name: '',
+      ingredient: '',
       category: '',
-      guests: 0,
+      recipe_pic: '',
       country: '',
-      date: '',
-      by: ''
+      procedure: '',
+      guests_served:0,
+      created_date: '',  
+      created_by: ''
     };
     this.currentIndex = -1;
     this.recipeapiService.findRecipeByName(this.name).subscribe({
       next: (data) => {
         this.recipes = data;
-        console.log(data);
+        console.log("My recipes",data);
       },
-      error: (error: any) => {
-        console.error(error);
-      }
     });
   } 
 

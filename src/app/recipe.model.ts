@@ -1,14 +1,12 @@
 export interface Recipe {
     id?: any;
-    name?: string;
-    description: string;
-    imagePath: string;
-    ingredients: string[];
-    rating: number;
-    procudure: string;
-    category: string;
-    guests: number;
-    country: string;
-    date: string;
-    by: string;
+    recipe_name?: any;
+    ingredient?: any;
+    category?: any;
+    recipe_pic?: any;
+    country?: any;
+    procedure?: any;
+    guests_served: any;
+    created_date?: any;
+    created_by?: any;
 }

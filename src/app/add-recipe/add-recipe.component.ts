@@ -9,17 +9,15 @@ import { RecipeapiservicesService } from '../Services/recipeapiservices.service'
 })
 export class AddRecipeComponent implements OnInit {
   recipe: Recipe = {
-    name: '',
-    description: '',
-    imagePath: '',
-    ingredients: [],
-    rating: 0,
-    procudure: '',
+    recipe_name: '',
+    ingredient: '',
     category: '',
-    guests: 0,
+    recipe_pic: '',
     country: '',
-    date: '',
-    by: ''
+    procedure: '',
+    guests_served:0,
+    created_date: '',  
+    created_by: ''
   };
   submitted=false;
 
@@ -29,42 +27,35 @@ export class AddRecipeComponent implements OnInit {
   }
   saveRecipe(): void {
     const data = {
-      name: this.recipe.name,
-      description: this.recipe.description,
-      imagePath: this.recipe.imagePath,
-      ingredients: this.recipe.ingredients,
-      rating: this.recipe.rating,
-      procudure: this.recipe.procudure,
+      recipe_name: this.recipe.recipe_name,
+      ingredient: this.recipe.ingredient,
       category: this.recipe.category,
-      guests: this.recipe.guests,
+      recipe_pic: this.recipe.recipe_pic,
       country: this.recipe.country,
-      date: this.recipe.date,
-      by: this.recipe.by
+      procedure: this.recipe.procedure,
+      guests_served:this.recipe.guests_served,
+      created_date: this.recipe.created_date,
+      created_by: this.recipe.created_by
     };
     this.recipeapiService.addRecipe(data).subscribe({
       next: response => {
         console.log(response);
         this.submitted=true;
       },
-      error: error => {
-        console.log(error);
-      }
     });
   }
   newRecipe(): void {
     this.submitted=false;
     this.recipe = {
-      name: '',
-      description: '',
-      imagePath: '',
-      ingredients: [],
-      rating: 0,
-      procudure: '',
+      recipe_name: '',
+      ingredient: '',
       category: '',
-      guests: 0,
+      recipe_pic: '',
       country: '',
-      date: '',
-      by: ''
+      procedure: '',
+      guests_served:0,
+      created_date: '',  
+      created_by: ''
     };
   }
 

@@ -9,19 +9,18 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./recipe-details.component.css']
 })
 export class RecipeDetailsComponent implements OnInit {
+  recipeData: any;
   @Input() viewMode = 'false';
   @Input() currentRecipe: Recipe = {
-    name: '',
-    description: '',  
-    imagePath: '',
-    ingredients: [],
-    rating: 0,
-    procudure: '',
+    recipe_name: '',
+    ingredient: '',
     category: '',
-    guests: 0,
+    recipe_pic: '',
     country: '',
-    date: '',
-    by: ''
+    procedure: '',
+    guests_served:0,
+    created_date: '',  
+    created_by: ''
   };
   message: string = '';
 
@@ -33,6 +32,13 @@ export class RecipeDetailsComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.recipeapiService.allRecipes().subscribe((data:any)=>{
+
+      console.log("My recipes",data);
+      this.recipeData=data;
+    });
+
+
     if (!this.viewMode) {
       this.message = '';
       this.getRecipe(this.route.snapshot.params['id']);
@@ -44,9 +50,6 @@ export class RecipeDetailsComponent implements OnInit {
         this.currentRecipe = data;
         console.log(data);
       },
-      error: (error: any) => {
-        console.error(error);
-      }
     });
   }
   updateRecipe(): void {
@@ -56,10 +59,6 @@ export class RecipeDetailsComponent implements OnInit {
         console.log(response);
         this.message = response.message ? response.message: 'Recipe updated successfully';
       },
-      error: (error: any) => {
-        console.error(error);
-        this.message = 'Error updating recipe';
-      }
     });
   }
   deleteRecipe(): void {
@@ -68,11 +67,8 @@ export class RecipeDetailsComponent implements OnInit {
         console.log(response);
         this.router.navigate(['/recipes']);
       },
-      error: (error: any) => {
-        console.error(error);
-      }
     });
   }
 
 
-}
+    }
