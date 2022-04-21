@@ -22,7 +22,7 @@
       <h4>Recipes</h4>
       <ul class="list-group">
         <li
-          class="list-group-item"
+          class="list-group-item bg-light text-dark"
           *ngFor="let recipe of recipes; let i = index"
           [class.active]="i == currentIndex"
           (click)="setActiveRecipe(recipe, i)"

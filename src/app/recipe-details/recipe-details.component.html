@@ -44,13 +44,79 @@
             name="description"
           />
         </div>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <input
+            type="text"
+            class="form-control"
+            id="category"
+            [(ngModel)]="currentRecipe.category"
+            name="category"
+          />
+        </div>
+        <div class="form-group">
+          <label for="image">Image</label>
+          <input
+            type="text"
+            class="form-control"
+            id="image"
+            [(ngModel)]="currentRecipe.recipe_pic"
+            name="image"
+          />
+        </div>
+        <div class="form-group">
+          <label for="country">Country</label>
+          <input
+            type="text"
+            class="form-control"
+            id="country"
+            [(ngModel)]="currentRecipe.country"
+            name="country"/>
+        </div>
+        <div class="form-group">
+          <label for="procedure">Procedure</label>
+          <input
+            type="text"
+            class="form-control"
+            id="procedure"
+            [(ngModel)]="currentRecipe.procedure"
+            name="procedure"/>
+        </div>
+        <div class="form-group">
+          <label for="guests_served">Guests Served</label>
+          <input
+            type="text"
+            class="form-control"
+            id="guests_served"
+            [(ngModel)]="currentRecipe.guests_served"
+            name="guests_served"/>
+        </div>
+        <div class="form-group">
+          <label for="created_on">Created On</label>
+          <input
+            type="text"
+            class="form-control"
+            id="created_on"
+            [(ngModel)]="currentRecipe.created_date"
+            name="created_on"/>
+        </div>
+        <div class="form-group">
+          <label for="created_by">Created By</label>
+          <input
+            type="text"
+            class="form-control"
+            id="created_by"
+            [(ngModel)]="currentRecipe.created_by"
+            name="created_by"/>
+        </div>
+
       </form>
       <button class="badge badge-danger mr-2" (click)="deleteRecipe()">
         Delete
       </button>
       <button
         type="submit"
-        class="badge badge-success mb-2"
+        class="badge badge-warning mb-2"
         (click)="updateRecipe()"
       >
         Update
