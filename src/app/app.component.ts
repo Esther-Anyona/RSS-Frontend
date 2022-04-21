@@ -8,20 +8,4 @@ import { RecipeapiservicesService } from './Services/recipeapiservices.service';
 })
 export class AppComponent {
   title = 'Recipes';
-  recipeData:any;
-
-  constructor(private recipeapiService:RecipeapiservicesService) { }
-      
-      ngOnInit(): void {
-
-
-        this.recipeapiService.allRecipes().subscribe((data:any)=>{
-
-          console.log("My recipes",data);
-          this.recipeData=data;
-      
-                    
-        })
-
-      }
 }

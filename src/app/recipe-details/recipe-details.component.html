@@ -1,4 +1,4 @@
-<div *ngIf="viewMode; else editable">
+<div *ngIf="viewMode; else editable" class="pt-4">
     <div *ngIf="currentRecipe.id">
       <h4>Recipe</h4>
       <div>
@@ -21,7 +21,7 @@
     </div>
   </div>
   <ng-template #editable>
-    <div *ngIf="currentRecipe.id" class="edit-form">
+    <div *ngIf="currentRecipe.id" class="edit-form pt-5">
       <h4>Recipe</h4>
       <form>
         <div class="form-group">

@@ -9,8 +9,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./recipe-details.component.css']
 })
 export class RecipeDetailsComponent implements OnInit {
-  recipeData: any;
-  @Input() viewMode = 'false';
+  
+  @Input() viewMode: boolean = false;
+
   @Input() currentRecipe: Recipe = {
     recipe_name: '',
     ingredient: '',
@@ -27,25 +28,18 @@ export class RecipeDetailsComponent implements OnInit {
   constructor(
     private recipeapiService: RecipeapiservicesService,
     private route: ActivatedRoute,
-    private router: Router
-  ) { }
+    private router: Router) { }
 
 
   ngOnInit(): void {
-    this.recipeapiService.allRecipes().subscribe((data:any)=>{
-
-      console.log("My recipes",data);
-      this.recipeData=data;
-    });
-
-
     if (!this.viewMode) {
       this.message = '';
       this.getRecipe(this.route.snapshot.params['id']);
     }
   }
-  getRecipe(id: string): void {
-    this.recipeapiService.getRecipeById(id).subscribe({
+  getRecipe(id: any): void {
+    this.recipeapiService.get(id)
+    .subscribe({
       next: (data) => {
         this.currentRecipe = data;
         console.log(data);
@@ -54,7 +48,7 @@ export class RecipeDetailsComponent implements OnInit {
   }
   updateRecipe(): void {
     this.message = '';
-    this.recipeapiService.updateRecipe(this.currentRecipe.id, this.currentRecipe).subscribe({
+    this.recipeapiService.update(this.currentRecipe.id, this.currentRecipe).subscribe({
       next: (response) => {
         console.log(response);
         this.message = response.message ? response.message: 'Recipe updated successfully';
@@ -62,7 +56,8 @@ export class RecipeDetailsComponent implements OnInit {
     });
   }
   deleteRecipe(): void {
-    this.recipeapiService.deleteRecipe(this.currentRecipe.id).subscribe({
+    this.recipeapiService.delete(this.currentRecipe.id)
+    .subscribe({
       next: (response) => {
         console.log(response);
         this.router.navigate(['/recipes']);

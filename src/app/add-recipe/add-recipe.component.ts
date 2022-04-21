@@ -37,7 +37,8 @@ export class AddRecipeComponent implements OnInit {
       created_date: this.recipe.created_date,
       created_by: this.recipe.created_by
     };
-    this.recipeapiService.addRecipe(data).subscribe({
+    this.recipeapiService.create(data)
+    .subscribe({
       next: response => {
         console.log(response);
         this.submitted=true;

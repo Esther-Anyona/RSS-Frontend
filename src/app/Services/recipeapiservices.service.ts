@@ -11,29 +11,31 @@ export class RecipeapiservicesService {
   recipeUrl='https://delicious-recipes-app.herokuapp.com/api/recipes';
   constructor(private http:HttpClient) { }
 
-  allRecipes():Observable<any>{
-  // console.log("Received Data",this.http.get(this.recipeUrl));
-    return this.http.get(this.recipeUrl)
-  }
-  getAllRecipes():Observable<Recipe[]>{
+  getAll():Observable<Recipe[]>{
     return this.http.get<Recipe[]>(this.recipeUrl);
   }
-  getRecipeById(id:any):Observable<any>{
+  get(id:any):Observable<any>{
     return this.http.get(`${this.recipeUrl}/${id}`);
   }
-  addRecipe(data:any):Observable<any>{
+  create(data:any):Observable<any>{
     return this.http.post(this.recipeUrl,data);
   }
-  updateRecipe(id:number, data:any):Observable<any>{
+  update(id:number, data:any):Observable<any>{
     return this.http.put(`${this.recipeUrl}/${id}`,data);
   }
-  deleteRecipe(id:number):Observable<any>{
+  delete(id:number):Observable<any>{
     return this.http.delete(`${this.recipeUrl}/${id}`);
   }
-  deleteAllRecipes():Observable<any>{
+  deleteAll():Observable<any>{
     return this.http.delete(this.recipeUrl);
   }
-  findRecipeByName(name:string):Observable<Recipe[]>{
-    return this.http.get<Recipe[]>(`${this.recipeUrl}?name=${name}`);
+  findByName(recipe_name:string):Observable<Recipe[]>{
+    return this.http.get<Recipe[]>(`${this.recipeUrl}?name=${recipe_name}`);
+  }
+  getImage(id:number):Observable<any>{
+    return this.http.get(`${this.recipeUrl}/${id}/image`);
+  }
+  postImage(id:number,data:any):Observable<any>{
+    return this.http.post(`${this.recipeUrl}/${id}/image`,data);
   }
 }

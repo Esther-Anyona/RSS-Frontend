@@ -21,23 +21,15 @@ export class RecipeListComponent implements OnInit {
     created_by: ''
   };
   currentIndex: number = -1;
-  name: string = '';
-  recipeData:any;
+  recipe_name: string = '';
 
   constructor(private recipeapiService:RecipeapiservicesService) { }
 
   ngOnInit(): void {
-    this.recipeapiService.allRecipes().subscribe((data:any)=>{
-
-      console.log("My recipes",data);
-      this.recipeData=data;
-  
-                
-    })
-    this.retrieveAllRecipes();
+    this.retrieveRecipes();
   }
-  retrieveAllRecipes(): void {
-    this.recipeapiService.getAllRecipes().subscribe({
+  retrieveRecipes(): void {
+    this.recipeapiService.getAll().subscribe({
       next: (data) => {
         this.recipes = data;
         console.log("My recipes",data);
@@ -45,7 +37,7 @@ export class RecipeListComponent implements OnInit {
     });
   }
   refreshList(): void {
-    this.retrieveAllRecipes();
+    this.retrieveRecipes();
     this.currentRecipe = {
       recipe_name: '',
       ingredient: '',
@@ -59,12 +51,12 @@ export class RecipeListComponent implements OnInit {
     };
     this.currentIndex = -1;
   }
-  setCurrentRecipe(recipe: Recipe, index: number): void {
+  setActiveRecipe(recipe: Recipe, index: number): void {
     this.currentRecipe = recipe;
     this.currentIndex = index;
   }
   removeAllRecipes(): void {
-    this.recipeapiService.deleteAllRecipes().subscribe({
+    this.recipeapiService.deleteAll().subscribe({
       next: (response) => {
         console.log(response);
         this.refreshList();
@@ -84,7 +76,7 @@ export class RecipeListComponent implements OnInit {
       created_by: ''
     };
     this.currentIndex = -1;
-    this.recipeapiService.findRecipeByName(this.name).subscribe({
+    this.recipeapiService.findByName(this.recipe_name).subscribe({
       next: (data) => {
         this.recipes = data;
         console.log("My recipes",data);
